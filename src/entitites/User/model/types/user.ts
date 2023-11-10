@@ -12,6 +12,6 @@ export interface User {
   name: string;
   username: string;
   email: string;
-  adress: UserAdress;
+  address: UserAdress;
   company: UserCompany;
 }
