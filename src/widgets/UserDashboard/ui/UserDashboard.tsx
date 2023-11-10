@@ -1,9 +1,9 @@
+import { useAppDispatch } from 'app/providers/store/store';
 import { User } from 'entitites/User';
 import { UserCard } from 'entitites/User/ui/UserCard/UserCard';
-import { memo, useMemo } from 'react';
+import { UserActionType } from 'pages/MainPage/model/reducers/MainPageUsersReducer';
+import { memo, useCallback, useMemo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { Card } from 'shared/ui/Card/Card';
-import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import cls from './UserDashboard.module.scss';
 
 interface UserDashboardProps {
@@ -12,9 +12,18 @@ interface UserDashboardProps {
 }
 
 export const UserDashboard = memo(({ className, users }: UserDashboardProps) => {
+  const dispatch = useAppDispatch();
+
+  const deleteUserById = useCallback(
+    (id: string) => {
+      dispatch({ type: UserActionType.DELETE_USER, payload: id });
+    },
+    [dispatch],
+  );
+
   const cards = useMemo(() => {
     const userCards = users.map((user) => {
-      return <UserCard user={user} className={cls.card} />;
+      return <UserCard deleteUserById={deleteUserById} user={user} className={cls.card} />;
     });
 
     return userCards;

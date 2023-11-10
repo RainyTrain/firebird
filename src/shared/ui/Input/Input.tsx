@@ -1,5 +1,6 @@
 import { ChangeEvent, InputHTMLAttributes, memo, useEffect, useRef, useState } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { useTypedSelector } from 'shared/lib/hooks/useTypedSelector';
 import cls from './Input.module.scss';
 
 type HTMLInputProps = Omit<
@@ -29,6 +30,8 @@ export const Input = memo((props: InputProps) => {
 
   const inputRef = useRef<HTMLInputElement>(null);
 
+  const { search } = useTypedSelector((state) => state.search);
+
   const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     onChange?.(event.target.value);
   };
@@ -44,7 +47,7 @@ export const Input = memo((props: InputProps) => {
       <input
         ref={inputRef}
         type={type}
-        value={value}
+        value={search}
         onChange={onChangeHandler}
         className={cls.input}
         placeholder={placeholder}

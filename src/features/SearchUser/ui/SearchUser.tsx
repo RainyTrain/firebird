@@ -5,13 +5,17 @@ import cls from './SearchUser.module.scss';
 
 interface SearchUserProps {
   className?: string;
+  setFilter: (arg: string) => void;
+  resetFilter: () => void;
 }
 
-export const SearchUser = ({ className }: SearchUserProps) => {
+export const SearchUser = ({ className, setFilter, resetFilter }: SearchUserProps) => {
   return (
     <div className={classNames(cls.SearchUser, {}, [className])}>
-      <Input className={cls.input} placeholder="Search" />
-      <Button className={cls.resetBtn}>Reset</Button>
+      <Input className={cls.input} placeholder="Search" onChange={setFilter} />
+      <Button className={cls.resetBtn} onClick={resetFilter}>
+        Reset
+      </Button>
     </div>
   );
 };
