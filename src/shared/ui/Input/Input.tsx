@@ -1,4 +1,4 @@
-import { ChangeEvent, InputHTMLAttributes, memo, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, InputHTMLAttributes, memo, useEffect, useRef } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTypedSelector } from 'shared/lib/hooks/useTypedSelector';
 import cls from './Input.module.scss';

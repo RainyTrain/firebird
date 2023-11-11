@@ -8,7 +8,6 @@ import { Page } from 'widgets/Page';
 import { UserDashboard } from 'widgets/UserDashboard/ui/UserDashboard';
 import { UserActionType } from '../model/reducers/MainPageUsersReducer';
 import { getUsers } from '../model/services/getUsers/getUsers';
-import cls from './MainPage.module.scss';
 
 interface MainPageProps {
   className?: string;
@@ -43,9 +42,9 @@ export const MainPage = ({ className }: MainPageProps) => {
   };
 
   return (
-    <Page className={classNames(cls.MainPage, {}, [className])}>
+    <Page className={classNames('', {}, [className])}>
       <SearchUser setFilter={setFilter} resetFilter={resetFilter} />
-      <UserDashboard users={data} />
+      <UserDashboard users={data} isLoading={isLoading}/>
     </Page>
   );
 };

@@ -36,7 +36,7 @@
 .opened {
   pointer-events: initial;
   opacity: 1;
-  z-index: var(--modal-z-index);
+  z-index: 2;
 
   .content {
     transform: scale(1);

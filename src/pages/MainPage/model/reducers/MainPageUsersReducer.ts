@@ -10,7 +10,7 @@ export enum UserActionType {
   RESET_FILTERS = 'RESET_FILTERS',
 }
 
-export interface FetchUsersAction {
+interface FetchUsersAction {
   type: UserActionType.FETCH_USERS_PENDING;
 }
 

@@ -7,7 +7,7 @@ import { searchUserReducer } from 'features/SearchUser';
 
 const composedEnhancer = composeWithDevTools(applyMiddleware(thunkMiddleware));
 
-export const reducers = combineReducers({ users: mainPageUsersReducer, search: searchUserReducer });
+const reducers = combineReducers({ users: mainPageUsersReducer, search: searchUserReducer });
 
 export const store = createStore(reducers, composedEnhancer);
 
